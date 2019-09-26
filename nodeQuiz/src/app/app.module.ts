@@ -1,11 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule} from '@angular/router';
 import { AppRoutes } from './app.routing';
-
 import { AppComponent } from './app.component';
-import { BaseLayoutComponent } from './shared';
+import { RouterModule} from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { TopicSelectionComponent } from './topic-selection/topic-selection.component';
 
@@ -28,7 +26,6 @@ import { MatDialogModule } from "@angular/material/dialog";
 @NgModule({
   declarations: [
     AppComponent,
-    BaseLayoutComponent,
     LoginComponent,
     TopicSelectionComponent
   ],
@@ -36,7 +33,6 @@ import { MatDialogModule } from "@angular/material/dialog";
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    BrowserAnimationsModule,
     MatIconModule,
     MatCardModule,
     MatFormFieldModule,

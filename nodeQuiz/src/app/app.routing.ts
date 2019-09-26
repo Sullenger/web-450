@@ -10,18 +10,12 @@
 
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import {BaseLayoutComponent} from './shared';
+import { LoginComponent } from './login/login.component';
+import { TopicSelectionComponent } from './topic-selection/topic-selection.component'
 
 export const AppRoutes: Routes = [
-  {
-    path: '',
-    component: BaseLayoutComponent,
-    children: [
-      /*
-        New components go here...
-       */
-    ]
-  }
+  { path: "home", component: LoginComponent },
+  { path: "quizSelection", component: TopicSelectionComponent },
 ];
 
 @NgModule({
@@ -29,3 +23,4 @@ export const AppRoutes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+export const routingComponents = [LoginComponent, TopicSelectionComponent]
