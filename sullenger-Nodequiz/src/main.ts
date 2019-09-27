@@ -1,3 +1,13 @@
+/*
+============================================
+; Title: NodeQuiz, LLC.
+; Author: Professor Krasso
+; Date: 25 September 2019
+; Modified By: Jason Sullenger
+; Description: Presentation and quiz site - MEAN stack
+;===========================================
+*/
+
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

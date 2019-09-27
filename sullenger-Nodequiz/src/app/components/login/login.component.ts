@@ -8,17 +8,26 @@
 ;===========================================
 */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service'
 
 @Component({
-  selector: 'app-root',
-  template: '<router-outlet></router-outlet>'
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class AppComponent {
-  title = 'Node Quiz';
+export class LoginComponent implements OnInit {
 
   constructor(private cookie: CookieService) {
 
+  }
+
+  ngOnInit() {
+  }
+  onSubmit(formData) {
+    if (formData.userLogin.employeeId) {
+      console.log(formData)
+      this.cookie.set('isAuthenticated', 'true', 7)
+    }
   }
 }

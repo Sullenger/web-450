@@ -11,11 +11,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-base-layout',
-  templateUrl: './base-layout.component.html',
-  styleUrls: ['./base-layout.component.css']
+  selector: 'app-summary',
+  template: `
+    <p>
+      summary works!
+    </p>
+  `,
+  styles: []
 })
-export class BaseLayoutComponent implements OnInit {
+export class SummaryComponent implements OnInit {
 
   constructor() { }
 

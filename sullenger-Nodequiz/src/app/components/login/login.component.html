@@ -1,0 +1,30 @@
+<mat-card-title class="form-title"></mat-card-title>
+<div class="container">
+  <mat-card class="form">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value); f.reset()">
+      <mat-card-content>
+        <h2>Please log in.</h2>
+
+        <div ngModelGroup="userLogin">
+          <!-- employee ID input -->
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              name="employeeId"
+              placeholder="Employee ID"
+              ngModel
+            />
+          </mat-form-field>
+        </div>
+        <div></div>
+      </mat-card-content>
+      <!-- Submit Button -->
+      <mat-card-actions>
+        <button mat-raised-button color="accent" type="submit">
+          Login
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

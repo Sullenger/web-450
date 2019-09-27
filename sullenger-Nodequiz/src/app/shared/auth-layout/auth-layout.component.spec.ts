@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TopicSelectionComponent } from './topic-selection.component';
+import { AuthLayoutComponent } from './auth-layout.component';
 
-describe('TopicSelectionComponent', () => {
-  let component: TopicSelectionComponent;
-  let fixture: ComponentFixture<TopicSelectionComponent>;
+describe('AuthLayoutComponent', () => {
+  let component: AuthLayoutComponent;
+  let fixture: ComponentFixture<AuthLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopicSelectionComponent ]
+      declarations: [ AuthLayoutComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TopicSelectionComponent);
+    fixture = TestBed.createComponent(AuthLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
