@@ -22,6 +22,7 @@ export const AppRoutes: Routes = [
     path: "session",
     component: AuthLayoutComponent,
     children: [
+      { path: "", component: LoginComponent },
       { path: "login", component: LoginComponent },
       { path: "not-found", component: NotFoundComponent }
     ]
@@ -42,7 +43,7 @@ export const AppRoutes: Routes = [
       }
     ]
   },
-  { path: "**", redirectTo: "session/not-found" }
+  { path: "**", redirectTo: "/session/not-found" }
 ];
 
 @NgModule({

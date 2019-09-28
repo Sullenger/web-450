@@ -7,7 +7,7 @@
       <mat-toolbar-row>
         <button mat-button class="toolbar__icon-button mat-button">
           <mat-icon>assessment</mat-icon>
-          <span style="margin-left: 5px !important" [routerLink]="['/']"
+          <span style="margin-left: 5px !important" (click)="navHome()"
             >NodeQuiz, LLC</span
           >
         </button>
@@ -24,11 +24,11 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
             <mat-icon>perm_contact_calendar</mat-icon>
-            <span>My Profile</span>
+            <span>Landing Page</span>
           </button>
           <button mat-menu-item>
-            <mat-icon>settings</mat-icon>
-            <span>Settings</span>
+            <mat-icon>list</mat-icon>
+            <span>Leaderboards</span>
           </button>
           <button (click)="logOut()" mat-menu-item>
             <mat-icon>exit_to_app</mat-icon>

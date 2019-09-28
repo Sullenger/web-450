@@ -8,16 +8,20 @@
 */
 
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from "ngx-cookie-service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-auth-layout',
   template: `
+  <div>
+  <header>
   <!-- Navbar -->
   <mat-toolbar class="menu" role="header" color="primary">
     <mat-toolbar-row>
       <button mat-button class="toolbar__icon-button mat-button">
         <mat-icon>assessment</mat-icon>
-        <span style="margin-left: 5px !important" [routerLink]="['/']"
+        <span style="margin-left: 5px !important" (click)="navHome()"
           >NodeQuiz, LLC</span
         >
       </button>
@@ -32,13 +36,13 @@ import { Component, OnInit } from '@angular/core';
         <mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button (click)="navHome()" mat-menu-item>
           <mat-icon>perm_contact_calendar</mat-icon>
-          <span>My Profile</span>
+          <span>Landing Page</span>
         </button>
         <button mat-menu-item>
-          <mat-icon>settings</mat-icon>
-          <span>Settings</span>
+          <mat-icon>list</mat-icon>
+          <span>Leaderboards</span>
         </button>
         <button mat-menu-item>
           <mat-icon>exit_to_app</mat-icon>
@@ -49,15 +53,31 @@ import { Component, OnInit } from '@angular/core';
   </mat-toolbar>
   <!-- endNavbar -->
 
-    <app-login></app-login>
+  </header>
+
+  <!-- Main page content -->
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  </div>
   `,
   styles: []
 })
 export class AuthLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private cookie: CookieService,) { }
 
   ngOnInit() {
+
   }
 
+  navHome() {
+    const value: string = this.cookie.get('isAuthenticated');
+    if(value){
+      this.router.navigate(["/home"]);
+    } else {
+      this.router.navigate(["/session/login"]);
+    }
+  }
 }
