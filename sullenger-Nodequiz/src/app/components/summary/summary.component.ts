@@ -7,10 +7,10 @@
 ;===========================================
 */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-summary',
+  selector: "app-summary",
   template: `
     <p>
       summary works!
@@ -19,10 +19,7 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class SummaryComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -42,9 +42,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(formData) {
+  onSubmit() {
     const employeeId = this.form.controls["employeeId"].value;
-    console.log(formData);
 
     this.http.get("/api/employees/" + employeeId).subscribe(res => {
       if (res) {
@@ -56,5 +55,3 @@ export class LoginComponent implements OnInit {
     });
   }
 }
-
-// this.validEmployeeIds.includes(parseInt(employeeId, 10))

@@ -7,18 +7,15 @@
 ;===========================================
 */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-topic-selection',
-  templateUrl: './topic-selection.component.html',
-  styleUrls: ['./topic-selection.component.css']
+  selector: "app-topic-selection",
+  templateUrl: "./topic-selection.component.html",
+  styleUrls: ["./topic-selection.component.css"]
 })
 export class TopicSelectionComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

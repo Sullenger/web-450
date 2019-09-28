@@ -27,7 +27,7 @@ import {
   MatSidenavModule,
   MatToolbarModule,
   MatMenuModule,
-  MatCheckboxModule,
+  MatCheckboxModule
 } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -37,7 +37,7 @@ import { SummaryComponent } from "./components/summary/summary.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { AuthLayoutComponent } from "./shared/auth-layout/auth-layout.component";
 import { CookieService } from "ngx-cookie-service";
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [

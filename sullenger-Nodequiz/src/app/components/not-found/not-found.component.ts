@@ -7,10 +7,10 @@
 ;===========================================
 */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-not-found',
+  selector: "app-not-found",
   template: `
     <p>
       not-found works!
@@ -19,10 +19,7 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class NotFoundComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

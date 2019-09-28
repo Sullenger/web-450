@@ -29,7 +29,7 @@ mongoose
     useNewUrlParser: true
   })
   .then(() =>
-    console.debug("Connection to the Database instance was succesful")
+    console.debug("Connection to the Database instance was successful")
   )
   .catch(err => console.debug("MongoDB Error: " + err.message));
 
