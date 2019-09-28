@@ -1,9 +1,8 @@
 /*
 ============================================
 ; Title: NodeQuiz, LLC.
-; Author: Professor Krasso
+; Author: Jason Sullenger
 ; Date: 25 September 2019
-; Modified By: Jason Sullenger
 ; Description: Presentation and quiz site - MEAN stack
 ;===========================================
 */
@@ -28,9 +27,9 @@ import {
   MatSidenavModule,
   MatToolbarModule,
   MatMenuModule,
-  MatCheckboxModule
+  MatCheckboxModule,
 } from "@angular/material";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { CommonModule } from "@angular/common";
 import { MatDialogModule } from "@angular/material/dialog";
@@ -38,6 +37,7 @@ import { SummaryComponent } from "./components/summary/summary.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { AuthLayoutComponent } from "./shared/auth-layout/auth-layout.component";
 import { CookieService } from "ngx-cookie-service";
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -64,7 +64,9 @@ import { CookieService } from "ngx-cookie-service";
     MatCheckboxModule,
     MatDialogModule,
     FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
+    HttpClientModule,
     CommonModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false })
   ],
