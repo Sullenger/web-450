@@ -1,7 +1,22 @@
+.container{
+  text-align: center;
+  margin-top: 100px;
+  font-family: Arial, Helvetica, sans-serif
+}
+
 .form {
-  width: 40%;
+  width: 20%;
+  height: 200px;
   margin: 0 auto;
+  background-color: lightgrey;
 }
 small {
   color: red;
+  display: block;
+  width: 100%;
+  min-width: 100% !important;
+  margin-top: 10px;
+}
+.inputStyle{
+  margin-top: 50px
 }

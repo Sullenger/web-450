@@ -1,6 +1,8 @@
 <div class="container">
+
   <mat-card class="form">
     <mat-card-content>
+        <h2>Please sign in</h2>
       <small *ngIf="errorMessage">{{ errorMessage }}</small>
       <form
         [formGroup]="form"
@@ -21,7 +23,7 @@
           "
           >Invalid Employee Id</small
         >
-        <mat-form-field>
+        <mat-form-field class="inputStyle">
           <input
             type="text"
             matInput
