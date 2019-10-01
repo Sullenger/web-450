@@ -12,12 +12,10 @@ import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
 import { AppRoutes } from "./app.routing";
-
 import { AppComponent } from "./app.component";
 import { BaseLayoutComponent } from "./shared";
 import { LoginComponent } from "./components/login/login.component";
 import { TopicSelectionComponent } from "./components/topic-selection/topic-selection.component";
-
 import {
   MatButtonModule,
   MatIconModule,
@@ -38,6 +36,7 @@ import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { AuthLayoutComponent } from "./shared/auth-layout/auth-layout.component";
 import { CookieService } from "ngx-cookie-service";
 import { HttpClientModule } from "@angular/common/http";
+import { PresentationComponent } from './components/presentation/presentation.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +46,8 @@ import { HttpClientModule } from "@angular/common/http";
     TopicSelectionComponent,
     SummaryComponent,
     NotFoundComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    PresentationComponent
   ],
   imports: [
     BrowserModule,
