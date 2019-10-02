@@ -20,9 +20,9 @@ export class TopicSelectionComponent implements OnInit {
 
   constructor() {
     this.quizzes = [
-      {id: 1, name:"Quiz One"},
-      {id: 2, name:"Quiz Two"},
-      {id: 3, name:"Quiz Three"}
+      {id: 1, name:"2 Pizza Team Rule"},
+      {id: 2, name:"JavaScript - N00b edition"},
+      {id: 3, name:"SOA/ESB"}
     ]
   }
 
