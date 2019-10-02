@@ -2,18 +2,11 @@
   <mat-card color="accent" class="form">
     <mat-card-content class="buttonGroup">
       <h2>Please select your topic:</h2>
-
-      <button class="buttonStyle" mat-raised-button color="accent" (click)="quizSelection(1)">
-        QUIZ 1
+<div *ngFor="let quiz of quizzes">
+      <button class="buttonStyle" mat-raised-button color="accent" routerLink="presentation/{{quiz.id}}">
+        {{quiz.name}}
       </button>
-
-      <button class="buttonStyle" mat-raised-button color="accent" (click)="quizSelection(2)">
-        QUIZ 2
-      </button>
-
-      <button class="buttonStyle" mat-raised-button color="accent" (click)="quizSelection(3)">
-        QUIZ 3
-      </button>
+    </div>
     </mat-card-content>
   </mat-card>
 </div>

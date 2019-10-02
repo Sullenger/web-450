@@ -8,8 +8,6 @@
 */
 
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { CookieService } from "ngx-cookie-service";
 
 @Component({
   selector: "app-topic-selection",
@@ -18,17 +16,18 @@ import { CookieService } from "ngx-cookie-service";
 })
 export class TopicSelectionComponent implements OnInit {
 
-  public selectedQuiz: string = "";
+  quizzes: any;
 
-  constructor(private router: Router, private cookie: CookieService) {}
+  constructor() {
+    this.quizzes = [
+      {id: 1, name:"Quiz One"},
+      {id: 2, name:"Quiz Two"},
+      {id: 3, name:"Quiz Three"}
+    ]
+  }
 
   ngOnInit() {}
 
-  quizSelection(quiz: string){
-    this.selectedQuiz = quiz;
-    this.cookie.set("hasSelectedQuiz", this.selectedQuiz, 1);
-    this.router.navigate(["presentation"]);
-  }
 }
 
 

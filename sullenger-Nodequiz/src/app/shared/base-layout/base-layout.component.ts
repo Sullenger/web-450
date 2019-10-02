@@ -28,6 +28,6 @@ export class BaseLayoutComponent implements OnInit {
   }
 
   navHome() {
-    this.router.navigate(["/landingPage"]);
+    this.router.navigate(["/landing"]);
   }
 }

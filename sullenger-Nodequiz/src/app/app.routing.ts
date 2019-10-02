@@ -17,6 +17,7 @@ import { SummaryComponent } from "./components/summary/summary.component";
 import { TopicSelectionComponent } from "./components/topic-selection/topic-selection.component";
 import { AuthGuardService } from "./shared/auth-guard/auth-guard.service";
 import { PresentationComponent } from "./components/presentation/presentation.component";
+import { QuizComponent } from "./components/quiz/quiz.component";
 
 export const AppRoutes: Routes = [
   {
@@ -28,22 +29,23 @@ export const AppRoutes: Routes = [
     ]
   },
   {
-    path: "",
+    path: "landing",
     component: BaseLayoutComponent,
     children: [
       {
         path: "",
+        component: TopicSelectionComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: "presentation/:id",
+        component: PresentationComponent,
         canActivate: [AuthGuardService],
-        children: [
-          {
-            path: "landingPage",
-            component: TopicSelectionComponent,
-          },
-          {
-            path: "presentation",
-            component: PresentationComponent,
-          }
-        ]
+      },
+      {
+        path: "quiz/:id",
+        component: QuizComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: "summary",
@@ -53,7 +55,7 @@ export const AppRoutes: Routes = [
     ]
   },
   { path: "**", redirectTo: "/session/not-found" },
-  { path: "", redirectTo: "landingPage", pathMatch: "full" }
+  { path: "", redirectTo: "/landingPage", pathMatch: "full" }
 ];
 
 @NgModule({

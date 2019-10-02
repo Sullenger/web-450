@@ -70,7 +70,7 @@ export class AuthLayoutComponent implements OnInit {
   navHome() {
     const value: string = this.cookie.get("isAuthenticated");
     if (value) {
-      this.router.navigate(["/landingPage"]);
+      this.router.navigate(["/landing"]);
     } else {
       this.router.navigate(["/session/login"]);
     }

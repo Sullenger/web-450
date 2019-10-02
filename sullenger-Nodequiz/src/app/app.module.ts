@@ -37,6 +37,8 @@ import { AuthLayoutComponent } from "./shared/auth-layout/auth-layout.component"
 import { CookieService } from "ngx-cookie-service";
 import { HttpClientModule } from "@angular/common/http";
 import { PresentationComponent } from './components/presentation/presentation.component';
+import { CarouselModule } from 'primeng/carousel';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { PresentationComponent } from './components/presentation/presentation.co
     SummaryComponent,
     NotFoundComponent,
     AuthLayoutComponent,
-    PresentationComponent
+    PresentationComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { PresentationComponent } from './components/presentation/presentation.co
     FlexLayoutModule,
     HttpClientModule,
     CommonModule,
+    CarouselModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false })
   ],
   providers: [CookieService],
