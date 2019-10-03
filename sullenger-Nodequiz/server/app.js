@@ -79,20 +79,7 @@ app.get("/api/employees", function(req, res, next) {
   });
 });
 
-// Get all quizzes
-app.get("/api/quiz_Bank", function(req, res, next) {
-  QuizBank.find({}, function(err, quiz_Bank) {
-    if (err) {
-      console.log(err);
-      return next(err);
-    } else {
-      console.log(quiz_Bank);
-      res.json(quiz_Bank);
-    }
-  });
-});
-
-// Post questions
+// Post quizzes
 app.post("/api/quiz_Bank", function(req, res, next) {
   const quiz = {
     quiz_Bank_Id: req.body.quiz_Bank_Id,
@@ -120,8 +107,31 @@ app.post("/api/quiz_Bank", function(req, res, next) {
   });
 });
 
+// Get quiz by id
+app.get("/api/quiz_Bank/:id", function(req, res, next) {
+  QuizBank.findOne({ quiz_Bank_Id: req.params.id }, function(err, quiz_Bank) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(quiz_Bank);
+      res.json(quiz_Bank);
+    }
+  });
+});
 
-
+// Get all quizzes
+app.get("/api/quiz_Bank", function(req, res, next) {
+  QuizBank.find({}, function(err, quiz_Bank) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(quiz_Bank);
+      res.json(quiz_Bank);
+    }
+  });
+});
 
 /**
  * Creates an express server and listens on port 3000
