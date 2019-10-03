@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
 const Employee = require("./db-models/employee");
+const QuizBank = require("./db-models/quiz-bank");
 
 let app = express();
 
@@ -66,7 +67,7 @@ app.get("/api/employees/:id", function(req, res, next) {
 });
 
 // Get all employees
-app.get("api/employees", function(req, res, next) {
+app.get("/api/employees", function(req, res, next) {
   Employee.find({}, function(err, employees) {
     if (err) {
       console.log(err);
@@ -77,6 +78,50 @@ app.get("api/employees", function(req, res, next) {
     }
   });
 });
+
+// Get all quizzes
+app.get("/api/quiz_Bank", function(req, res, next) {
+  QuizBank.find({}, function(err, quiz_Bank) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(quiz_Bank);
+      res.json(quiz_Bank);
+    }
+  });
+});
+
+// Post questions
+app.post("/api/quiz_Bank", function(req, res, next) {
+  const quiz = {
+    quiz_Bank_Id: req.body.quiz_Bank_Id,
+    quiz_Name: req.body.quiz_Name,
+    quiz_Questions: {
+      question: req.body.quiz_Questions.question,
+      quiz_Answers: {
+        answer_1: req.body.quiz_Questions.quiz_Answers.answer_1,
+        answer_2: req.body.quiz_Questions.quiz_Answers.answer_2,
+        answer_3: req.body.quiz_Questions.quiz_Answers.answer_3,
+        answer_4: req.body.quiz_Questions.quiz_Answers.answer_4,
+        correct_Answer: req.body.quiz_Questions.quiz_Answers.correct_Answer
+      }
+    }
+  };
+
+  QuizBank.create(quiz, function(err, quiz_Bank) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(quiz_Bank);
+      res.json(quiz_Bank);
+    }
+  });
+});
+
+
+
 
 /**
  * Creates an express server and listens on port 3000
