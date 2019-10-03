@@ -29,7 +29,7 @@ export const AppRoutes: Routes = [
     ]
   },
   {
-    path: "landing",
+    path: "",
     component: BaseLayoutComponent,
     children: [
       {
@@ -55,7 +55,6 @@ export const AppRoutes: Routes = [
     ]
   },
   { path: "**", redirectTo: "/session/not-found" },
-  { path: "", redirectTo: "/landingPage", pathMatch: "full" }
 ];
 
 @NgModule({

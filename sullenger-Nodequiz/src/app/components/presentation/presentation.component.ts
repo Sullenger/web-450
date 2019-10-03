@@ -29,17 +29,14 @@ export class PresentationComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {
     this.presentation = parseInt(this.route.snapshot.paramMap.get("id"), 10);
-    console.log(this.presentation)
 
     if (this.presentation === 1) {
       this.selection = "sullenger-Nodequiz-2PizzaTeam-presentation";
-
     } else if (this.presentation === 2) {
       this.selection = "sullenger-Nodequiz-Javascript-presentation";
     } else {
       this.selection = "sullenger-Nodequiz-SOAandESB-presentation";
     }
-    console.log(this.selection);
   }
   ngOnInit() {}
 }

@@ -59,7 +59,7 @@ export class NotFoundComponent implements OnInit {
   navHome() {
     const value: string = this.cookie.get("isAuthenticated");
     if (value) {
-      this.router.navigate(["/landing"]);
+      this.router.navigate(["/"]);
     } else {
       this.router.navigate(["/session/login"]);
     }
