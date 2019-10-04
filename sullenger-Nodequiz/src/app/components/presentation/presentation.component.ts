@@ -10,6 +10,7 @@ import { ActivatedRoute } from "@angular/router";
 export class PresentationComponent implements OnInit {
   presentation: number;
   selection: string;
+  presentationName: string;
   presentationSlides = [
     {name: 'Slide 1', image: 'Slide1.PNG'},
     {name: 'Slide 2', image: 'Slide2.PNG'},
@@ -32,10 +33,13 @@ export class PresentationComponent implements OnInit {
 
     if (this.presentation === 1) {
       this.selection = "sullenger-Nodequiz-2PizzaTeam-presentation";
+      this.presentationName = "2 Pizza Team Rule"
     } else if (this.presentation === 2) {
       this.selection = "sullenger-Nodequiz-Javascript-presentation";
+      this.presentationName = "JavaScript - N00b Edition";
     } else {
       this.selection = "sullenger-Nodequiz-SOAandESB-presentation";
+      this.presentationName = "SOA and ESB";
     }
   }
   ngOnInit() {}
