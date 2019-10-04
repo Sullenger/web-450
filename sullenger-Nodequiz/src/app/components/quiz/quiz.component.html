@@ -1,1 +1,11 @@
-<p>quiz works!</p>
+<div class="container" *ngIf="isDataLoaded">
+  <p>{{ quizBody }}</p>
+
+  <!-- <div *ngFor="let item of quizBody.quiz_Questions; index as i">
+    <h4>Question {{ i + 1 }} - {{ item.question }}</h4>
+    <p>{{ item.quizAnswers.answer_1 }}</p>
+    <p>{{ item.quizAnswers.answer_2 }}</p>
+    <p>{{ item.quizAnswers.answer_3 }}</p>
+    <p>{{ item.quizAnswers.answer_4 }}</p>
+  </div> -->
+</div>

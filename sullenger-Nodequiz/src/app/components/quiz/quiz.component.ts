@@ -10,6 +10,7 @@ import { HttpClient } from "@angular/common/http";
 export class QuizComponent implements OnInit {
   quizSelection: number;
   errorMessage: string;
+  quizBody: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
@@ -18,7 +19,11 @@ export class QuizComponent implements OnInit {
 
     this.http.get("/api/quiz_bank/" + this.quizSelection).subscribe(res => {
       if (res) {
-        console.log(res)
+        this.quizBody = res;
+        console.log(this.quizBody);
+        console.log(this.quizBody.quiz_Name);
+        console.log(this.quizBody.quiz_Questions);
+        console.log(this.quizBody.quiz_Questions.question)
       } else {
         this.errorMessage = "We encountered an error retrieving your quiz";
       }
