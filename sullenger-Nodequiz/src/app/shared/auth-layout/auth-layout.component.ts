@@ -19,9 +19,9 @@ import { Router } from "@angular/router";
         <!-- Navbar -->
         <mat-toolbar class="menu" role="header" color="primary">
           <mat-toolbar-row>
-            <button mat-button class="toolbar__icon-button mat-button">
+            <button mat-button class="toolbar__icon-button mat-button" (click)="navHome()">
               <mat-icon>assessment</mat-icon>
-              <span style="margin-left: 5px !important" (click)="navHome()"
+              <span style="margin-left: 5px !important"
                 >NodeQuiz, LLC</span
               >
             </button>

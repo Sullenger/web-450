@@ -21,9 +21,6 @@ export class QuizComponent implements OnInit {
       if (res) {
         this.quizBody = res;
         console.log(this.quizBody);
-        console.log(this.quizBody.quiz_Name);
-        console.log(this.quizBody.quiz_Questions);
-        console.log(this.quizBody.quiz_Questions.question)
       } else {
         this.errorMessage = "We encountered an error retrieving your quiz";
       }

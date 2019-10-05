@@ -1,11 +1,17 @@
-<div class="container" *ngIf="isDataLoaded">
-  <p>{{ quizBody }}</p>
-
-  <!-- <div *ngFor="let item of quizBody.quiz_Questions; index as i">
-    <h4>Question {{ i + 1 }} - {{ item.question }}</h4>
-    <p>{{ item.quizAnswers.answer_1 }}</p>
-    <p>{{ item.quizAnswers.answer_2 }}</p>
-    <p>{{ item.quizAnswers.answer_3 }}</p>
-    <p>{{ item.quizAnswers.answer_4 }}</p>
-  </div> -->
+<div class="container">
+  <small *ngIf="errorMessage">{{ errorMessage }}</small>
+  <div *ngIf="quizBody">
+    <p>{{ quizBody.quiz_Name }}</p>
+    <div *ngFor="let item of quizBody.quiz_Questions; index as i">
+      <h4>Question {{ i + 1 }} - {{ item.question }}</h4>
+      <br/>
+      <button mat-raised-button color="accent">{{ item.quiz_Answers.answer_1 }}</button><br/>
+      <button mat-raised-button color="accent">{{ item.quiz_Answers.answer_2 }}</button><br/>
+      <button mat-raised-button color="accent">{{ item.quiz_Answers.answer_3 }}</button><br/>
+      <button mat-raised-button color="accent">{{ item.quiz_Answers.answer_4 }}</button><br/>
+      <!-- <div *ngFor="let option of item.quiz_Answers">
+      </div> -->
+    </div>
+  </div>
+  <button mat-raised-button color="primary" routerLink="/presentation/{{ quizSelection }}">Return to Presentation</button>
 </div>
