@@ -1,3 +1,19 @@
-.quizButton {
+.container {
+  margin: 15px auto;
+  width: 55%;
+}
+
+.alignCenter {
   text-align: center;
 }
+
+.slideDiv {
+  margin: 0 auto;
+  width: 85%;
+}
+
+img {
+  width: 100%;
+}
+
+

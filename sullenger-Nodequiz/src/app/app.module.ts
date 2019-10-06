@@ -25,7 +25,8 @@ import {
   MatSidenavModule,
   MatToolbarModule,
   MatMenuModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatRadioModule
 } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -66,6 +67,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
     MatMenuModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatRadioModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
