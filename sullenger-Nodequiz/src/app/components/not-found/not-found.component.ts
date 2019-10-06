@@ -34,8 +34,8 @@ import { Router } from "@angular/router";
       }
 
       .form {
-        width: 60%;
-        height: 200px;
+        width: 50%;
+        height: 250px;
         margin: 0 auto;
         text-align: center;
         background-color: grey;
