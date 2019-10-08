@@ -1,3 +1,12 @@
+/*
+============================================
+; Title: NodeQuiz, LLC.
+; Author: Jason Sullenger
+; Date: 25 September 2019
+; Description: Presentation and quiz site - MEAN stack
+;===========================================
+*/
+
 import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
 
