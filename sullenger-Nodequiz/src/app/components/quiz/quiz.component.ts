@@ -7,16 +7,17 @@
 ;===========================================
 */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
-import {FormControl, FormGroup} from '@angular/forms';
+import { CookieService } from "ngx-cookie-service";
+import { FormControl, FormGroup } from "@angular/forms";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'app-quiz',
-  templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.css']
+  selector: "app-quiz",
+  templateUrl: "./quiz.component.html",
+  styleUrls: ["./quiz.component.css"]
 })
 export class QuizComponent implements OnInit {
   quizSelection: number;
@@ -24,7 +25,7 @@ export class QuizComponent implements OnInit {
   quizBody: any;
   score: number;
 
-  public order = {
+  public answerBank = {
     question1: { correctAnswer: "", submittedAnswer: "" },
     question2: { correctAnswer: "", submittedAnswer: "" },
     question3: { correctAnswer: "", submittedAnswer: "" },
@@ -35,11 +36,15 @@ export class QuizComponent implements OnInit {
     question8: { correctAnswer: "", submittedAnswer: "" },
     question9: { correctAnswer: "", submittedAnswer: "" },
     question10: { correctAnswer: "", submittedAnswer: "" },
+    score: 0,
+    employeeID: null
   };
 
-
-
-  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private cookie: CookieService
+  ) {}
 
   ngOnInit() {
     this.quizSelection = parseInt(this.route.snapshot.paramMap.get("id"), 10);
@@ -48,27 +53,35 @@ export class QuizComponent implements OnInit {
       if (res) {
         this.quizBody = res;
         console.log(this.quizBody);
-        // console.log(this.quizBody.quiz_Questions[0]);
-        // for(let i=0; i<10; i++){
-        //   let iteration = "question"+(i+1);
-        //   this.order[iteration].submittedAnswer = this.quizBody.quiz_Questions[i].quiz_answers.correct_Answer;
-        //   console.log(this.order[iteration].submittedAnswer)
-        // }
+        this.answerBank.employeeID = this.cookie.get("employeeID");
+        for (let i = 0; i < 10; i++) {
+          let iteration = "question" + (i + 1);
+          this.answerBank[
+            iteration
+          ].correctAnswer = this.quizBody.quiz_Questions[
+            i
+          ].quiz_Answers.correct_Answer;
+        }
       } else {
         this.errorMessage = "We encountered an error retrieving your quiz";
       }
     });
   }
   onSubmit(formData) {
-    console.log(formData)
-    if(formData){
-      for(let i=1; i<11; i++){
-        let iteration = "question"+i;
-        this.order[iteration].submittedAnswer = formData[iteration].submittedAnswer;
-        if(this.order[iteration].submittedAnswer === this.order[iteration].correctAnswer){
-          this.score += 1;
+    console.log(formData);
+    if (formData) {
+      for (let i = 1; i < 11; i++) {
+        let iteration = "question" + i;
+        this.answerBank[iteration].submittedAnswer =
+          formData.answerBank[iteration];
+        if (
+          this.answerBank[iteration].submittedAnswer ===
+          this.answerBank[iteration].correctAnswer
+        ) {
+          this.answerBank.score += 1;
         }
       }
+      console.log(this.answerBank);
     }
   }
 }

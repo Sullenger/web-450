@@ -20,8 +20,8 @@
             >Question {{ i + 1 }} - {{ item.question }}</mat-card-title
           >
           <mat-card-content>
-            <div ngModelGroup="question{{ i + 1 }}" class="answerBank">
-              <mat-radio-group name="submittedAnswer" ngModel>
+            <div ngModelGroup="answerBank" class="answerBank">
+              <mat-radio-group name="question{{i+1}}" ngModel required>
                 <mat-radio-button value="{{ item.quiz_Answers.answer_1 }}">{{
                   item.quiz_Answers.answer_1
                 }}</mat-radio-button
@@ -45,7 +45,7 @@
         </div>
         <!-- Submit Button -->
         <mat-card-actions>
-          <button mat-raised-button color="primary" type="submit">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!f.form.valid">
             Submit Quiz
           </button>
         </mat-card-actions>
