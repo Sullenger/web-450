@@ -1,0 +1,29 @@
+<!--
+============================================
+; Title: NodeQuiz, LLC.
+; Author: Jason Sullenger
+; Date: 25 September 2019
+; Description: Presentation and quiz site - MEAN stack
+;===========================================
+-->
+
+
+<div class="container">
+  <h2 mat-dialog-title>Quiz Results</h2>
+  <!-- dialog content -->
+  <mat-dialog-content class="">
+    <h2>Quiz Score: {{userData.score}}/10</h2>
+    <h2>{{userData.score*10}}%</h2>
+
+    <!-- <div *ngFor="let item of answerBank">
+      <h4>item.question</h4>
+      <p></p>
+      <p></p>
+    </div> -->
+
+  </mat-dialog-content>
+  <!-- dialog button -->
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="close()">Close</button>
+  </mat-dialog-actions>
+</div>

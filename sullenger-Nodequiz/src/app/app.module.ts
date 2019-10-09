@@ -40,6 +40,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { PresentationComponent } from './components/presentation/presentation.component';
 import { CarouselModule } from 'primeng/carousel';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { QuizResultsComponent } from './components/quiz-results/quiz-results.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { QuizComponent } from './components/quiz/quiz.component';
     NotFoundComponent,
     AuthLayoutComponent,
     PresentationComponent,
-    QuizComponent
+    QuizComponent,
+    QuizResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +79,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false })
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [QuizResultsComponent]
 })
 export class AppModule {}
