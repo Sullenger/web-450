@@ -12,7 +12,7 @@ import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 import { MatDialog, MatDialogConfig } from "@angular/material";
-import { QuizResultsComponent } from "../quiz-results/quiz-results.component"
+import { QuizResultsComponent } from "../quiz-results/quiz-results.component";
 // import { FormControl, FormGroup } from "@angular/forms";
 // import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
@@ -32,17 +32,19 @@ export class QuizComponent implements OnInit {
     employeeID: null
   };
 
-  public answerBank = {
-    question1: { question: "", correctAnswer: "", submittedAnswer: "" },
-    question2: { question: "", correctAnswer: "", submittedAnswer: "" },
-    question3: { question: "", correctAnswer: "", submittedAnswer: "" },
-    question4: { question: "", correctAnswer: "", submittedAnswer: "" },
-    question5: { question: "", correctAnswer: "", submittedAnswer: "" },
-    question6: { question: "", correctAnswer: "", submittedAnswer: "" },
-    question7: { question: "", correctAnswer: "", submittedAnswer: "" },
-    question8: { question: "", correctAnswer: "", submittedAnswer: "" },
-    question9: { question: "", correctAnswer: "", submittedAnswer: "" },
-    question10: { question: "", correctAnswer: "", submittedAnswer: "" }
+  public quizResults = {
+    questions: [
+      { question: "", correctAnswer: "", submittedAnswer: "" },
+      { question: "", correctAnswer: "", submittedAnswer: "" },
+      { question: "", correctAnswer: "", submittedAnswer: "" },
+      { question: "", correctAnswer: "", submittedAnswer: "" },
+      { question: "", correctAnswer: "", submittedAnswer: "" },
+      { question: "", correctAnswer: "", submittedAnswer: "" },
+      { question: "", correctAnswer: "", submittedAnswer: "" },
+      { question: "", correctAnswer: "", submittedAnswer: "" },
+      { question: "", correctAnswer: "", submittedAnswer: "" },
+      { question: "", correctAnswer: "", submittedAnswer: "" }
+    ]
   };
 
   constructor(
@@ -56,11 +58,11 @@ export class QuizComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 
     const quizModal = this.dialog.open(QuizResultsComponent, {
-      width: "50%",
-      height: "80%"
+      width: "60%",
+      height: "90%"
     });
 
-    quizModal.componentInstance.answerBank = this.answerBank;
+    quizModal.componentInstance.quizResults = this.quizResults;
     quizModal.componentInstance.userData = this.userData;
   }
 
@@ -70,36 +72,76 @@ export class QuizComponent implements OnInit {
     this.http.get("/api/quiz_bank/" + this.quizSelection).subscribe(res => {
       if (res) {
         this.quizBody = res;
-        console.log(this.quizBody);
         this.userData.employeeID = this.cookie.get("employeeID");
         for (let i = 0; i < 10; i++) {
-          let iteration = "question" + (i + 1);
-          this.answerBank[
-            iteration
+          this.quizResults.questions[i].question = this.quizBody.quiz_Questions[
+            i
+          ].question;
+          this.quizResults.questions[
+            i
           ].correctAnswer = this.quizBody.quiz_Questions[
             i
           ].quiz_Answers.correct_Answer;
-          this.answerBank[iteration].question = this.quizBody.quiz_Questions[i].question;
         }
       } else {
         this.errorMessage = "We encountered an error retrieving your quiz";
       }
     });
+    console.log("On Init");
+    console.log(this.quizResults);
   }
+
   onSubmit(formData) {
     if (formData) {
-      for (let i = 1; i < 11; i++) {
-        let iteration = "question" + i;
-        this.answerBank[iteration].submittedAnswer =
+      console.log("Pre formdata");
+      console.log(formData);
+      for (let i = 0; i < 10; i++) {
+        let iteration = "question" + (i + 1);
+        this.quizResults.questions[i].submittedAnswer =
           formData.answerBank[iteration];
         if (
-          this.answerBank[iteration].submittedAnswer ===
-          this.answerBank[iteration].correctAnswer
+          this.quizResults.questions[i].submittedAnswer ===
+          this.quizResults.questions[i].correctAnswer
         ) {
           this.userData.score += 1;
         }
       }
       this.openDialog();
     }
+
+    // On init
+    // this.quizBody = res;
+    // console.log(this.quizBody);
+    //     this.userData.employeeID = this.cookie.get("employeeID");
+    //     for (let i = 0; i < 10; i++) {
+    //       let iteration = "question" + (i + 1);
+    //       this.quizResults[
+    //         iteration
+    //       ].correctAnswer = this.quizBody.quiz_Questions[
+    //         i
+    //       ].quiz_Answers.correct_Answer;
+    //       this.quizResults[iteration].question = this.quizBody.quiz_Questions[i].question;
+    //     }
+    //   } else {
+    //     this.errorMessage = "We encountered an error retrieving your quiz";
+    //   }
+    // });
+
+    // on Submit
+
+    // if (formData) {
+    //   for (let i = 1; i < 11; i++) {
+    //     let iteration = "question" + i;
+    //     this.quizResults[iteration].submittedAnswer =
+    //       formData.quizResults[iteration];
+    //     if (
+    //       this.quizResults[iteration].submittedAnswer ===
+    //       this.quizResults[iteration].correctAnswer
+    //     ) {
+    //       this.userData.score += 1;
+    //     }
+    //   }
+    //   this.openDialog();
+    // }
   }
 }

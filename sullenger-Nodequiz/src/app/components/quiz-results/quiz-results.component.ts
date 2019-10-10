@@ -7,27 +7,30 @@
 ;===========================================
 */
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 import { MatDialogRef } from "@angular/material";
 import { QuizComponent } from "../quiz/quiz.component";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-quiz-results',
-  templateUrl: './quiz-results.component.html',
-  styleUrls: ['./quiz-results.component.css']
+  selector: "app-quiz-results",
+  templateUrl: "./quiz-results.component.html",
+  styleUrls: ["./quiz-results.component.css"]
 })
 export class QuizResultsComponent implements OnInit {
   // resultsDisplay: any;
 
-  constructor(private dialogRef: MatDialogRef<QuizComponent>, private router: Router) { }
-  @Input() public answerBank;
+  constructor(
+    private dialogRef: MatDialogRef<QuizComponent>,
+    private router: Router
+  ) {}
+  @Input() public quizResults;
   @Input() public userData;
 
   ngOnInit() {
-    console.log(this.answerBank);
+    console.log(this.quizResults);
     console.log(this.userData);
-    }
+  }
 
   close() {
     this.dialogRef.close();

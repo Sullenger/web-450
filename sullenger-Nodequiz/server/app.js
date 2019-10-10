@@ -142,6 +142,26 @@ app.get("/api/quiz_Bank", function(req, res, next) {
   });
 });
 
+// Updates employee quiz results
+
+// app.put("/api/employees/:id", function(req, res, next) {
+//   Employee.update(
+//     req.params.employeeId,
+//     {
+//       $push: { employeeQuizHistory: req.body.employeeQuizHistory }
+//     },
+//     function(err, success) {
+//       if (err) {
+//         console.log(err);
+//         return next(err);
+//       } else {
+//         console.log(success);
+//         res.json(success);
+//       }
+//     }
+//   );
+// });
+
 /**
  * Creates an express server and listens on port 3000
  */
