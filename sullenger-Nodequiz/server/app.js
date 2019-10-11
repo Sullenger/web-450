@@ -45,6 +45,7 @@ mongoose
 
 /************************* API routes go below this line ********************/
 
+// posts new employee
 app.post("/api/employees", function(req, res, next) {
   const employee = {
     employeeId: req.body.employeeId,
@@ -141,6 +142,39 @@ app.get("/api/quiz_Bank", function(req, res, next) {
     }
   });
 });
+
+
+
+
+
+
+app.put("/api/employees/:id/employeeQuizHistory", function(req, res, next) {
+  const quizResults = req.body.employeeQuizHistory.employeeQuizResult;
+
+  Employee.findOne({ employeeId: req.params.id }, function(err, employee) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log("quizResults Response");
+      console.log(quizResults);
+      employee.employeeQuizHistory.push({ quizResults });
+      employee.save(function(err) {
+        if (err) {
+          console.log(err);
+          return next(err);
+        } else {
+          console.log(employee);
+          res.json(employee);
+        }
+      });
+    }
+  });
+});
+
+
+
+
 
 // Updates employee quiz results
 

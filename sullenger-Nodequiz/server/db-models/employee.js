@@ -13,14 +13,14 @@ const Schema = mongoose.Schema;
 let employeeResultsSchema = new Schema({
   employeeId: { type: Schema.Types.ObjectId, ref: "Employee" },
   quiz_Name: { type: Schema.Types.ObjectId, ref: "EmployeeHistory" },
-  date: { type: String },
-  score: { type: Number }
+  // date: { type: String },
+  quiz: { type: Object }
 });
 
 let employeeHistorySchema = new Schema({
   employeeId: { type: Schema.Types.ObjectId, ref: "Employee" },
   quiz_Name: { type: String },
-  employeeQuizResults: [employeeResultsSchema]
+  employeeQuizResult: [employeeResultsSchema]
 });
 
 let employeeSchema = new Schema({
