@@ -16,7 +16,7 @@ const mongoose = require("mongoose");
 const Employee = require("./db-models/employee");
 const QuizBank = require("./db-models/quiz-bank");
 const QuizResult = require("./db-models/quiz-result");
-const Leaderboard = require("./db-models/leaderboard");
+// const Leaderboard = require("./db-models/leaderboard");
 
 let app = express();
 

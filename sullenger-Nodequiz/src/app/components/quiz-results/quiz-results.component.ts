@@ -25,11 +25,9 @@ export class QuizResultsComponent implements OnInit {
     private router: Router
   ) {}
   @Input() public quizResults;
-  @Input() public userData;
 
   ngOnInit() {
     console.log(this.quizResults);
-    console.log(this.userData);
   }
 
   close() {

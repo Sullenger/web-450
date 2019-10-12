@@ -11,13 +11,21 @@
   <h1 mat-dialog-title>Quiz Results</h1>
   <!-- dialog content -->
   <mat-dialog-content class="">
-    <h3>Quiz Score: {{ userData.score }}/10</h3>
-    <h3>Percent: {{ userData.score * 10 }}%</h3>
+    <h3>Quiz Score: {{ quizResults.userData[0].score }}/10</h3>
+    <h3>Percent: {{ quizResults.userData[0].score * 10 }}%</h3>
     <div *ngFor="let item of quizResults.questions; index as i">
-      <h4>Question {{ i + 1 }} - {{ item.question }}</h4>
-      <p>You answered: {{ item.submittedAnswer }}</p>
-      <p>Correct answer: {{ item.correctAnswer }}</p>
-      <hr />
+      <div *ngIf="item.submittedAnswer != item.correctAnswer" class="borderRadius answerIncorrect">
+        <h4>Question {{ i + 1 }} - {{ item.question }}</h4>
+        <p>You answered: {{ item.submittedAnswer }}</p>
+        <p>Correct answer: {{ item.correctAnswer }}</p>
+        <hr />
+      </div>
+      <div *ngIf="item.submittedAnswer === item.correctAnswer" class="borderRadius answerCorrect">
+        <h4>Question {{ i + 1 }} - {{ item.question }}</h4>
+        <p>You answered: {{ item.submittedAnswer }}</p>
+        <p>Correct answer: {{ item.correctAnswer }}</p>
+        <hr />
+      </div>
     </div>
   </mat-dialog-content>
   <!-- dialog button -->

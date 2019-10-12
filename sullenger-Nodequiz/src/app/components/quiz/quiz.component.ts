@@ -65,11 +65,11 @@ export class QuizComponent implements OnInit {
 
     const quizModal = this.dialog.open(QuizResultsComponent, {
       width: "60%",
-      height: "90%"
+      height: "90%",
+      disableClose: true
     });
 
     quizModal.componentInstance.quizResults = this.quizResults;
-    quizModal.componentInstance.userData = this.quizResults.userData;
   }
 
   ngOnInit() {
@@ -94,8 +94,8 @@ export class QuizComponent implements OnInit {
         this.errorMessage = "We encountered an error retrieving your quiz";
       }
     });
-    console.log("On Init");
-    console.log(this.quizResults);
+    // console.log("On Init");
+    // console.log(this.quizResults);
   }
 
   onSubmit(formData) {
@@ -110,17 +110,22 @@ export class QuizComponent implements OnInit {
           this.quizResults.questions[i].correctAnswer
         ) {
           this.quizResults.userData[0].score += 1;
+          console.log(this.quizResults.userData[0].score)
         }
       }
-      this.http.post("/api/quiz/"+this.quizSelection+"/quiz-results", {
+      this.http.post("/api/quiz/"+ this.quizSelection + "/quiz-results", {
         employeeId: this.quizResults.userData[1].employeeId,
         quizId: this.quizSelection,
-        result: this.quizResults
-      }).subscribe(res=>{
+        result: JSON.stringify(this.quizResults)
+      }).subscribe(res => {
 
+      }, err => {
+        console.log(err);
+      }, () =>{
+        // console.log("On Success - " + this.quizResults)
+        this.openDialog();
       })
 
-      this.openDialog();
     }
 
     // On init
