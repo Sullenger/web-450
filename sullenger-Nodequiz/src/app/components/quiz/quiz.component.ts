@@ -13,6 +13,7 @@ import { HttpClient } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { QuizResultsComponent } from "../quiz-results/quiz-results.component";
+import * as moment from 'moment';
 // import { FormControl, FormGroup } from "@angular/forms";
 // import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
@@ -25,12 +26,12 @@ export class QuizComponent implements OnInit {
   quizSelection: number;
   errorMessage: string;
   quizBody: any;
-  score: number;
+  // score: number;
 
-  public userData = {
-    score: 0,
-    employeeID: null
-  };
+  // public userData = {
+  //   score: 0,
+  //   employeeID: null
+  // };
 
   public quizResults = {
     questions: [
@@ -44,6 +45,11 @@ export class QuizComponent implements OnInit {
       { question: "", correctAnswer: "", submittedAnswer: "" },
       { question: "", correctAnswer: "", submittedAnswer: "" },
       { question: "", correctAnswer: "", submittedAnswer: "" }
+    ],
+    userData:[
+      {score: 0},
+      {employeeId: null},
+      {date: ""},
     ]
   };
 
@@ -63,7 +69,7 @@ export class QuizComponent implements OnInit {
     });
 
     quizModal.componentInstance.quizResults = this.quizResults;
-    quizModal.componentInstance.userData = this.userData;
+    quizModal.componentInstance.userData = this.quizResults.userData;
   }
 
   ngOnInit() {
@@ -72,7 +78,8 @@ export class QuizComponent implements OnInit {
     this.http.get("/api/quiz_bank/" + this.quizSelection).subscribe(res => {
       if (res) {
         this.quizBody = res;
-        this.userData.employeeID = this.cookie.get("employeeID");
+        this.quizResults.userData[1].employeeId = this.cookie.get("employeeID");
+        // this.quizResults.userData.employeeID = this.cookie.get("employeeID");
         for (let i = 0; i < 10; i++) {
           this.quizResults.questions[i].question = this.quizBody.quiz_Questions[
             i
@@ -93,8 +100,7 @@ export class QuizComponent implements OnInit {
 
   onSubmit(formData) {
     if (formData) {
-      console.log("Pre formdata");
-      console.log(formData);
+      this.quizResults.userData[2].date = moment().format("DD/MM/YYYY")
       for (let i = 0; i < 10; i++) {
         let iteration = "question" + (i + 1);
         this.quizResults.questions[i].submittedAnswer =
@@ -103,9 +109,17 @@ export class QuizComponent implements OnInit {
           this.quizResults.questions[i].submittedAnswer ===
           this.quizResults.questions[i].correctAnswer
         ) {
-          this.userData.score += 1;
+          this.quizResults.userData[0].score += 1;
         }
       }
+      this.http.post("/api/quiz/"+this.quizSelection+"/quiz-results", {
+        employeeId: this.quizResults.userData[1].employeeId,
+        quizId: this.quizSelection,
+        result: this.quizResults
+      }).subscribe(res=>{
+
+      })
+
       this.openDialog();
     }
 

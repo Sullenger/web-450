@@ -15,6 +15,8 @@ const path = require("path");
 const mongoose = require("mongoose");
 const Employee = require("./db-models/employee");
 const QuizBank = require("./db-models/quiz-bank");
+const QuizResult = require("./db-models/quiz-result");
+const Leaderboard = require("./db-models/leaderboard");
 
 let app = express();
 
@@ -143,30 +145,25 @@ app.get("/api/quiz_Bank", function(req, res, next) {
   });
 });
 
-// Updates employee record
-app.put("/api/employees/:id/employeeQuizHistory", function(req, res, next) {
-  const quizResults = req.body.employeeQuizHistory.employeeQuizResult;
+// posts new quizResult
+app.post("/api/quiz/:id/quiz-results", function(req, res, next) {
+  const quizResult = {
+    employeeId: req.body.employeeId,
+    quizId: req.body.quizId,
+    result: req.body.result
+  };
 
-  Employee.findOne({ employeeId: req.params.id }, function(err, employee) {
+  QuizResult.create(quizResult, function(err, quiz) {
     if (err) {
       console.log(err);
       return next(err);
     } else {
-      console.log("quizResults Response");
-      console.log(quizResults);
-      employee.employeeQuizHistory.push({ quizResults });
-      employee.save(function(err) {
-        if (err) {
-          console.log(err);
-          return next(err);
-        } else {
-          console.log(employee);
-          res.json(employee);
-        }
-      });
+      console.log(quizResult);
+      res.json(quizResult);
     }
   });
 });
+
 
 /**
  * Creates an express server and listens on port 3000
