@@ -13,8 +13,9 @@ const Schema = mongoose.Schema;
 let quizResultSchema = new Schema({
   employeeId: { type: String },
   quizId: { type: String },
+  date: { type: String },
+  score: { type: String },
   result: { type: String }
 });
 
 module.exports = mongoose.model("QuizResult", quizResultSchema);
-

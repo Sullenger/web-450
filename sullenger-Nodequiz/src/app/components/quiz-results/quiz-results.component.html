@@ -14,13 +14,19 @@
     <h3>Quiz Score: {{ quizResults.userData[0].score }}/10</h3>
     <h3>Percent: {{ quizResults.userData[0].score * 10 }}%</h3>
     <div *ngFor="let item of quizResults.questions; index as i">
-      <div *ngIf="item.submittedAnswer != item.correctAnswer" class="borderRadius answerIncorrect">
+      <div
+        *ngIf="item.submittedAnswer != item.correctAnswer"
+        class="borderRadius answerIncorrect"
+      >
         <h4>Question {{ i + 1 }} - {{ item.question }}</h4>
         <p>You answered: {{ item.submittedAnswer }}</p>
         <p>Correct answer: {{ item.correctAnswer }}</p>
         <hr />
       </div>
-      <div *ngIf="item.submittedAnswer === item.correctAnswer" class="borderRadius answerCorrect">
+      <div
+        *ngIf="item.submittedAnswer === item.correctAnswer"
+        class="borderRadius answerCorrect"
+      >
         <h4>Question {{ i + 1 }} - {{ item.question }}</h4>
         <p>You answered: {{ item.submittedAnswer }}</p>
         <p>Correct answer: {{ item.correctAnswer }}</p>
@@ -30,6 +36,21 @@
   </mat-dialog-content>
   <!-- dialog button -->
   <mat-dialog-actions>
-    <button mat-raised-button color="warn" (click)="close()">Close</button>
+    <button
+      mat-raised-button
+      color="accent"
+      class="marginLeft"
+      (click)="summary()"
+    >
+      Cumulative Summary
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      class="closeButton"
+      (click)="close()"
+    >
+      Close
+    </button>
   </mat-dialog-actions>
 </div>

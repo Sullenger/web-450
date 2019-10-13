@@ -6,14 +6,70 @@
 ; Description: Presentation and quiz site - MEAN stack
 ;=========================================== -->
 
-<h4>Summary Page</h4>
-
-<!-- <div *ngFor="let item of quizResults; index as i">
-      <p>Employee Id: {{ item.employeeId }}</p>
-      <p>Quiz Id: {{ item.quizId }}</p>
-      <div *ngFor="let option of item.result; index as i">
-        <p>Score: {{ option.userData[0].score }}</p>
-        <p>Date: {{ option.userData.date  }}</p>
+<div class="container">
+  <!-- Start individual Summary -->
+  <div class="indivSummary" *ngIf="userQuiz1 || userQuiz2 || userQuiz3">
+    <div>
+      <h4>Individual Summary</h4>
+    </div>
+    <div class="cardGroup">
+      <div *ngIf="userQuiz1" class="summaryCards">
+        <mat-card class="colorGrey">
+          <mat-card-content>
+            <p><strong>2 Pizza Team Rule</strong></p>
+            <p>{{ userQuiz1.date | date: "medium" }}</p>
+            <p>Score: {{ userQuiz1.score * 10 }}%</p>
+          </mat-card-content>
+        </mat-card>
       </div>
-      <hr />
-  </div> -->
+      <div *ngIf="userQuiz2" class="summaryCards">
+        <mat-card class="colorGrey">
+          <mat-card-content>
+            <p><strong>JavaScript - N00b Edition</strong></p>
+            <p>{{ userQuiz2.date | date: "medium" }}</p>
+            <p>Score: {{ userQuiz2.score * 10 }}%</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div *ngIf="userQuiz3" class="summaryCards">
+        <mat-card class="colorGrey">
+          <mat-card-content>
+            <p><strong>SOA and ESB</strong></p>
+            <p>{{ userQuiz3.date | date: "medium" }}</p>
+            <p>Score: {{ userQuiz3.score * 10 }}%</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <!-- Start summary table -->
+  <div class="summaryTitle">
+    <h4>Employee Summary</h4>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Employee Id</th>
+        <th scope="col">Quiz Id</th>
+        <th scope="col">Score</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of quizResults">
+      <tr>
+        <th scope="row">{{ item.employeeId }}</th>
+        <div *ngIf="item.quizId === '1'">
+          <td>{{ item.quizId }} - 2 Pizza Team Rule</td>
+        </div>
+        <div *ngIf="item.quizId === '2'">
+          <td>{{ item.quizId }} - JavaScript - N00b Edition</td>
+        </div>
+        <div *ngIf="item.quizId === '3'">
+          <td>{{ item.quizId }} - SOA and ESB</td>
+        </div>
+        <td>{{ item.score * 10 }}%</td>
+        <td>{{ item.date | date: "medium" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

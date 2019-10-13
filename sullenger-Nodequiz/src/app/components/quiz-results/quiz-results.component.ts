@@ -18,8 +18,6 @@ import { Router } from "@angular/router";
   styleUrls: ["./quiz-results.component.css"]
 })
 export class QuizResultsComponent implements OnInit {
-  // resultsDisplay: any;
-
   constructor(
     private dialogRef: MatDialogRef<QuizComponent>,
     private router: Router
@@ -33,5 +31,10 @@ export class QuizResultsComponent implements OnInit {
   close() {
     this.dialogRef.close();
     this.router.navigate(["/"]);
+  }
+
+  summary() {
+    this.dialogRef.close();
+    this.router.navigate(["/summary"]);
   }
 }

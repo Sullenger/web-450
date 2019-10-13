@@ -17,5 +17,4 @@ export class AppComponent {
   title = "Node Quiz";
 
   constructor() {}
-
-};
+}

@@ -13,7 +13,7 @@ import { HttpClient } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { QuizResultsComponent } from "../quiz-results/quiz-results.component";
-import * as moment from 'moment';
+import * as moment from "moment";
 import { Router } from "@angular/router";
 
 @Component({
@@ -25,7 +25,7 @@ export class QuizComponent implements OnInit {
   quizSelection: number;
   errorMessage: string;
   quizBody: any;
-
+  score: number;
 
   public quizResults = {
     questions: [
@@ -40,11 +40,7 @@ export class QuizComponent implements OnInit {
       { question: "", correctAnswer: "", submittedAnswer: "" },
       { question: "", correctAnswer: "", submittedAnswer: "" }
     ],
-    userData:[
-      {score: 0},
-      {employeeId: null},
-      {date: ""},
-    ]
+    userData: [{ score: 0 }, { employeeId: null }, { date: "" }]
   };
 
   constructor(
@@ -74,7 +70,6 @@ export class QuizComponent implements OnInit {
       if (res) {
         this.quizBody = res;
         this.quizResults.userData[1].employeeId = this.cookie.get("employeeID");
-        // this.quizResults.userData.employeeID = this.cookie.get("employeeID");
         for (let i = 0; i < 10; i++) {
           this.quizResults.questions[i].question = this.quizBody.quiz_Questions[
             i
@@ -93,7 +88,8 @@ export class QuizComponent implements OnInit {
 
   onSubmit(formData) {
     if (formData) {
-      this.quizResults.userData[2].date = moment().format("DD/MM/YYYY")
+      this.score = 0;
+      this.quizResults.userData[2].date = moment().format();
       for (let i = 0; i < 10; i++) {
         let iteration = "question" + (i + 1);
         this.quizResults.questions[i].submittedAnswer =
@@ -102,24 +98,28 @@ export class QuizComponent implements OnInit {
           this.quizResults.questions[i].submittedAnswer ===
           this.quizResults.questions[i].correctAnswer
         ) {
-          this.quizResults.userData[0].score += 1;
-          console.log(this.quizResults.userData[0].score)
+          this.score += 1;
         }
       }
-      this.http.post("/api/quiz/"+ this.quizSelection + "/quiz-results", {
-        employeeId: this.quizResults.userData[1].employeeId,
-        quizId: this.quizSelection,
-        result: JSON.stringify(this.quizResults)
-      }).subscribe(res => {
-
-      }, err => {
-        console.log(err);
-        this.router.navigate(["/"]);
-      }, () =>{
-        // console.log("On Success - " + this.quizResults)
-        this.openDialog();
-      })
-
+      this.quizResults.userData[0].score = this.score;
+      this.http
+        .post("/api/quiz/" + this.quizSelection + "/quiz-results", {
+          employeeId: this.quizResults.userData[1].employeeId,
+          quizId: this.quizSelection,
+          score: this.score,
+          date: moment().format(),
+          result: JSON.stringify(this.quizResults)
+        })
+        .subscribe(
+          res => {},
+          err => {
+            console.log(err);
+            this.router.navigate(["/"]);
+          },
+          () => {
+            this.openDialog();
+          }
+        );
     }
   }
 }

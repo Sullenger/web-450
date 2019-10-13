@@ -37,10 +37,10 @@ import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { AuthLayoutComponent } from "./shared/auth-layout/auth-layout.component";
 import { CookieService } from "ngx-cookie-service";
 import { HttpClientModule } from "@angular/common/http";
-import { PresentationComponent } from './components/presentation/presentation.component';
-import { CarouselModule } from 'primeng/carousel';
-import { QuizComponent } from './components/quiz/quiz.component';
-import { QuizResultsComponent } from './components/quiz-results/quiz-results.component';
+import { PresentationComponent } from "./components/presentation/presentation.component";
+import { CarouselModule } from "primeng/carousel";
+import { QuizComponent } from "./components/quiz/quiz.component";
+import { QuizResultsComponent } from "./components/quiz-results/quiz-results.component";
 
 @NgModule({
   declarations: [

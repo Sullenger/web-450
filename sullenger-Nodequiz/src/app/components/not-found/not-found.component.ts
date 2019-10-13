@@ -19,7 +19,12 @@ import { Router } from "@angular/router";
         <mat-card-content class="contentGroup">
           <h1 class="contentStyle">Error 404</h1>
           <h3 class="contentStyle">Page not found</h3>
-          <button class="contentStyle" (click)="navHome()" mat-raised-button color="primary">
+          <button
+            class="contentStyle"
+            (click)="navHome()"
+            mat-raised-button
+            color="primary"
+          >
             Home
           </button>
         </mat-card-content>
@@ -30,15 +35,15 @@ import { Router } from "@angular/router";
     `
       .container {
         margin-top: 100px;
-        font-family: Arial, Helvetica, sans-serif
+        font-family: Arial, Helvetica, sans-serif;
+        width: 40%;
       }
 
       .form {
-        width: 50%;
-        height: 250px;
+        height: 300px;
         margin: 0 auto;
         text-align: center;
-        background-color: grey;
+        background-color: lightgrey;
       }
       .contentGroup {
         padding-top: 25px;

@@ -7,24 +7,25 @@
 ;===========================================
 */
 
-.container{
+.container {
   margin-top: 100px;
-}
-
-h2{
-  font-family: Arial, Helvetica, sans-serif
+  width: 40%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .form {
-  width: 30%;
-  height: 250px;
+  height: 300px;
   margin: 0 auto;
   text-align: center;
   background-color: lightgrey;
 }
 
-.buttonStyle{
+.buttonStyle {
   display: block;
-  width: 50%;
+  width: 80%;
   margin: 20px auto;
+}
+
+.buttonGroup {
+  margin-top: 5%;
 }

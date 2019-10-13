@@ -7,13 +7,15 @@
 ;===========================================
 */
 
-.answerCorrect{
+.answerCorrect {
   background-color: rgba(17, 186, 8, 0.25);
 }
+
 .answerIncorrect {
   background-color: rgba(201, 8, 8, 0.25);
 }
-.borderRadius{
+
+.borderRadius {
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
@@ -21,4 +23,12 @@
 
 p {
   margin-left: 25px;
+}
+
+.marginLeft {
+  margin-left: 50px;
+}
+
+.closeButton {
+  float: right;
 }

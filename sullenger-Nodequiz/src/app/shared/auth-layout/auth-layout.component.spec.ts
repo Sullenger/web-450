@@ -7,19 +7,18 @@
 ;===========================================
 */
 
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AuthLayoutComponent } from './auth-layout.component';
+import { AuthLayoutComponent } from "./auth-layout.component";
 
-describe('AuthLayoutComponent', () => {
+describe("AuthLayoutComponent", () => {
   let component: AuthLayoutComponent;
   let fixture: ComponentFixture<AuthLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthLayoutComponent ]
-    })
-    .compileComponents();
+      declarations: [AuthLayoutComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -28,7 +27,7 @@ describe('AuthLayoutComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

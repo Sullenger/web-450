@@ -19,11 +19,13 @@ import { Router } from "@angular/router";
         <!-- Navbar -->
         <mat-toolbar class="menu" role="header" color="primary">
           <mat-toolbar-row>
-            <button mat-button class="toolbar__icon-button mat-button" (click)="navHome()">
+            <button
+              mat-button
+              class="toolbar__icon-button mat-button"
+              (click)="navHome()"
+            >
               <mat-icon>assessment</mat-icon>
-              <span style="margin-left: 5px !important"
-                >NodeQuiz, LLC</span
-              >
+              <span style="margin-left: 5px !important">NodeQuiz, LLC</span>
             </button>
 
             <div fxFlex></div>
@@ -42,7 +44,7 @@ import { Router } from "@angular/router";
               </button>
               <button mat-menu-item (click)="navSummary()">
                 <mat-icon>list</mat-icon>
-                <span>Cummulative Summary</span>
+                <span>Cumulative Summary</span>
               </button>
               <button (click)="logOut()" mat-menu-item>
                 <mat-icon>exit_to_app</mat-icon>

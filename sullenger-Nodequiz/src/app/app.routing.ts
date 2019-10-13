@@ -40,7 +40,7 @@ export const AppRoutes: Routes = [
       {
         path: "presentation/:id",
         component: PresentationComponent,
-        canActivate: [AuthGuardService],
+        canActivate: [AuthGuardService]
       },
       {
         path: "quiz/:id",
@@ -54,7 +54,7 @@ export const AppRoutes: Routes = [
       }
     ]
   },
-  { path: "**", redirectTo: "/session/not-found" },
+  { path: "**", redirectTo: "/session/not-found" }
 ];
 
 @NgModule({

@@ -6,3 +6,40 @@
 ; Description: Presentation and quiz site - MEAN stack
 ;===========================================
 */
+.container {
+  width: 60%;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+}
+
+.cardGroup {
+  margin: 0 auto;
+  width: 650px;
+}
+
+.indivSummary {
+  margin-top: 50px;
+  width: 100%;
+}
+.summaryCards {
+  height: 150px;
+  width: 205px;
+  text-align: center;
+  display: inline-block;
+  margin: 5px;
+}
+
+.colorGrey {
+  background-color: lightgrey;
+}
+
+.summaryTitle {
+  margin-top: 50px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .summaryCards {
+    display: block;
+  }
+}

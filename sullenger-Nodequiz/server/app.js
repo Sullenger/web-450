@@ -16,7 +16,6 @@ const mongoose = require("mongoose");
 const Employee = require("./db-models/employee");
 const QuizBank = require("./db-models/quiz-bank");
 const QuizResult = require("./db-models/quiz-result");
-// const Leaderboard = require("./db-models/leaderboard");
 
 let app = express();
 
@@ -150,6 +149,8 @@ app.post("/api/quiz/:id/quiz-results", function(req, res, next) {
   const quizResult = {
     employeeId: req.body.employeeId,
     quizId: req.body.quizId,
+    score: req.body.score,
+    date: req.body.date,
     result: req.body.result
   };
 

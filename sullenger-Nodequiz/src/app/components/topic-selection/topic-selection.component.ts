@@ -8,6 +8,8 @@
 */
 
 import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { CookieService } from "ngx-cookie-service";
 
 @Component({
   selector: "app-topic-selection",
@@ -15,23 +17,22 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./topic-selection.component.css"]
 })
 export class TopicSelectionComponent implements OnInit {
-
   quizzes: any;
+  employeeId: string;
+  user: any;
 
-  constructor() {
+  constructor(private http: HttpClient, private cookie: CookieService) {
     this.quizzes = [
-      {id: 1, name:"2 Pizza Team Rule"},
-      {id: 2, name:"JavaScript - N00b edition"},
-      {id: 3, name:"SOA/ESB"}
-    ]
+      { id: 1, name: "2 Pizza Team Rule" },
+      { id: 2, name: "JavaScript - N00b edition" },
+      { id: 3, name: "SOA/ESB" }
+    ];
   }
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    this.employeeId = this.cookie.get("employeeID");
+    this.http.get("/api/employees/" + this.employeeId).subscribe(res => {
+      this.user = res;
+    });
+  }
 }
-
-
-
-
-
-

@@ -22,7 +22,7 @@ export class BaseLayoutComponent implements OnInit {
   ngOnInit() {}
 
   logOut() {
-    this.cookie.deleteAll()
+    this.cookie.deleteAll();
     this.router.navigate(["/session/login"]);
   }
 

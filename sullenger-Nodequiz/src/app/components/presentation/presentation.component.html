@@ -7,19 +7,16 @@
 ;===========================================
 -->
 
-
 <div class="container" fxLayout="column">
   <mat-card class="mat-elevation-z8">
-    <mat-card-title class="alignCenter">{{presentationName}}</mat-card-title>
+    <mat-card-title class="alignCenter">{{ presentationName }}</mat-card-title>
     <mat-card-content>
       <p-carousel [value]="presentationSlides" numVisible="1">
         <ng-template class="slideStyling" let-item pTemplate="item">
           <br /><br />
-            <div class="slideDiv">
-              <img
-                src="./assets/{{ selection }}/{{ item.image }}"
-              />
-            </div>
+          <div class="slideDiv">
+            <img src="./assets/{{ selection }}/{{ item.image }}" />
+          </div>
           <br /><br />
         </ng-template>
       </p-carousel>
@@ -27,7 +24,13 @@
     <mat-card-actions>
       <!-- Quiz button -->
       <div class="alignCenter">
-        <button mat-raised-button color="primary" routerLink="/quiz/{{ presentation }}">Take Quiz</button>
+        <button
+          mat-raised-button
+          color="primary"
+          routerLink="/quiz/{{ presentation }}"
+        >
+          Take Quiz
+        </button>
       </div>
     </mat-card-actions>
   </mat-card>
