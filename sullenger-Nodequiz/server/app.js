@@ -164,6 +164,18 @@ app.post("/api/quiz/:id/quiz-results", function(req, res, next) {
   });
 });
 
+// Get all quizResults
+app.get("/api/quiz-results", function(req, res, next) {
+  QuizResult.find({}, function(err, quizresult) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(quizresult);
+      res.json(quizresult);
+    }
+  });
+});
 
 /**
  * Creates an express server and listens on port 3000

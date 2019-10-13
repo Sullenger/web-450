@@ -14,8 +14,7 @@ import { CookieService } from "ngx-cookie-service";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { QuizResultsComponent } from "../quiz-results/quiz-results.component";
 import * as moment from 'moment';
-// import { FormControl, FormGroup } from "@angular/forms";
-// import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-quiz",
@@ -26,12 +25,7 @@ export class QuizComponent implements OnInit {
   quizSelection: number;
   errorMessage: string;
   quizBody: any;
-  // score: number;
 
-  // public userData = {
-  //   score: 0,
-  //   employeeID: null
-  // };
 
   public quizResults = {
     questions: [
@@ -57,7 +51,8 @@ export class QuizComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private cookie: CookieService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   openDialog() {
@@ -94,8 +89,6 @@ export class QuizComponent implements OnInit {
         this.errorMessage = "We encountered an error retrieving your quiz";
       }
     });
-    // console.log("On Init");
-    // console.log(this.quizResults);
   }
 
   onSubmit(formData) {
@@ -121,46 +114,12 @@ export class QuizComponent implements OnInit {
 
       }, err => {
         console.log(err);
+        this.router.navigate(["/"]);
       }, () =>{
         // console.log("On Success - " + this.quizResults)
         this.openDialog();
       })
 
     }
-
-    // On init
-    // this.quizBody = res;
-    // console.log(this.quizBody);
-    //     this.userData.employeeID = this.cookie.get("employeeID");
-    //     for (let i = 0; i < 10; i++) {
-    //       let iteration = "question" + (i + 1);
-    //       this.quizResults[
-    //         iteration
-    //       ].correctAnswer = this.quizBody.quiz_Questions[
-    //         i
-    //       ].quiz_Answers.correct_Answer;
-    //       this.quizResults[iteration].question = this.quizBody.quiz_Questions[i].question;
-    //     }
-    //   } else {
-    //     this.errorMessage = "We encountered an error retrieving your quiz";
-    //   }
-    // });
-
-    // on Submit
-
-    // if (formData) {
-    //   for (let i = 1; i < 11; i++) {
-    //     let iteration = "question" + i;
-    //     this.quizResults[iteration].submittedAnswer =
-    //       formData.quizResults[iteration];
-    //     if (
-    //       this.quizResults[iteration].submittedAnswer ===
-    //       this.quizResults[iteration].correctAnswer
-    //     ) {
-    //       this.userData.score += 1;
-    //     }
-    //   }
-    //   this.openDialog();
-    // }
   }
 }

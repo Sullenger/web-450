@@ -40,9 +40,9 @@ import { Router } from "@angular/router";
                 <mat-icon>perm_contact_calendar</mat-icon>
                 <span>Landing Page</span>
               </button>
-              <button mat-menu-item>
+              <button mat-menu-item (click)="navSummary()">
                 <mat-icon>list</mat-icon>
-                <span>Leaderboards</span>
+                <span>Cummulative Summary</span>
               </button>
               <button (click)="logOut()" mat-menu-item>
                 <mat-icon>exit_to_app</mat-icon>
@@ -78,5 +78,9 @@ export class AuthLayoutComponent implements OnInit {
 
   logOut() {
     this.router.navigate(["/session/login"]);
+  }
+
+  navSummary() {
+    this.router.navigate(["/summary"]);
   }
 }
